@@ -74,8 +74,22 @@ def leaf_prediction(labels):
     cls = classes_dict.most_common(1)[0][0]
     return cls.item()
 
-# Step 7 - build_tree (not yet solved)
-# TODO: implement
+# Step 7 - build_tree
+def build_tree(features, labels, max_depth=10, min_samples_split=2, feature_subset=None, depth=0):
+    # TODO: recursively grow a decision tree, returning a nested dict of leaf/internal nodes.
+    if (should_stop(labels, depth, max_depth, min_samples_split)):
+        prediction = leaf_prediction(labels)
+        return {'leaf': True, 'prediction': prediction}
+    else:
+        if feature_subset:
+            feature_indices = feature_subset
+        else:
+            feature_indices = np.arange(features.shape[1])
+        dct = best_split(features, labels, feature_indices)
+        (left_features, left_labels, right_features, right_labels) = split_dataset(features, labels, dct['feature_index'], dct['threshold'])
+        left_node = build_tree(left_features, left_labels, max_depth, min_samples_split, feature_subset, depth=depth+1)
+        right_node =build_tree(right_features, right_labels, max_depth, min_samples_split, feature_subset, depth=depth+1)
+        return {'leaf': False, 'feature_index': dct['feature_index'], 'threshold': dct['threshold'], 'left': left_node, 'right': right_node}
 
 # Step 8 - predict_example_tree (not yet solved)
 # TODO: implement
