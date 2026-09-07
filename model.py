@@ -66,8 +66,13 @@ def should_stop(labels, depth, max_depth, min_samples_split):
         return True
     return False
 
-# Step 6 - leaf_prediction (not yet solved)
-# TODO: implement
+# Step 6 - leaf_prediction
+from collections import Counter
+def leaf_prediction(labels):
+    # TODO: choose a single class label to output for a leaf given the labels that reached it
+    classes_dict = Counter(labels)
+    cls = classes_dict.most_common(1)[0][0]
+    return cls.item()
 
 # Step 7 - build_tree (not yet solved)
 # TODO: implement
