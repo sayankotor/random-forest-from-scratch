@@ -24,7 +24,7 @@ python scaffold.py
 - [ ] **12.** train_forest
 - [ ] **13.** combine_predictions
 - [ ] **14.** predict_forest
-- [ ] **15.** accuracy
+- [x] **15.** accuracy
 
 ---
 

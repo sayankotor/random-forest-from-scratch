@@ -129,6 +129,8 @@ def predict_tree(tree, features):
 # Step 14 - predict_forest (not yet solved)
 # TODO: implement
 
-# Step 15 - accuracy (not yet solved)
-# TODO: implement
+# Step 15 - accuracy
+def accuracy(predictions, labels):
+    # TODO: compute the fraction of entries where predictions equals labels
+    return (np.sum(predictions == labels))/len(labels)
 
