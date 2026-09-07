@@ -20,8 +20,18 @@ def impurity(labels):
 
     return 1 - sum_pk
 
-# Step 2 - split_dataset (not yet solved)
-# TODO: implement
+# Step 2 - split_dataset
+import numpy as np
+
+def split_dataset(features, labels, feature_index, threshold):
+    # TODO: partition rows into left (feature <= threshold) and right (feature > threshold)
+    feature_row = features[:,feature_index]
+    left_features = features[feature_row<=threshold,:]
+    left_labels = labels[feature_row<=threshold]
+    right_features = features[feature_row>threshold, :]
+    right_labels = labels[feature_row>threshold]
+
+    return (left_features, left_labels, right_features, right_labels)
 
 # Step 3 - split_score (not yet solved)
 # TODO: implement
