@@ -157,8 +157,15 @@ def combine_predictions(tree_predictions):
     # Применяем функцию голосования по вертикальной оси (axis=0) для каждого примера
     return np.apply_along_axis(vote, axis=0, arr=tree_predictions)
 
-# Step 14 - predict_forest (not yet solved)
-# TODO: implement
+# Step 14 - predict_forest
+def predict_forest(forest, features):
+    # TODO: predict classes for a dataset using the whole trained forest.
+    predictions = np.array([predict_tree(tree['tree'], features) for tree in forest])
+
+    #print (predictions.shape)
+    #print (predictions)
+    res = combine_predictions(predictions)
+    return res
 
 # Step 15 - accuracy
 def accuracy(predictions, labels):
