@@ -58,8 +58,13 @@ def best_split(features, labels, feature_indices):
                 dct['threshold'] = trashhold
     return dct
 
-# Step 5 - should_stop (not yet solved)
-# TODO: implement
+# Step 5 - should_stop
+def should_stop(labels, depth, max_depth, min_samples_split):
+    """Return True if this node should become a leaf instead of splitting further."""
+    # TODO: decide whether to stop growing based on purity, depth, and size...
+    if (depth>= max_depth or len(labels)<= min_samples_split or impurity(labels)==0):
+        return True
+    return False
 
 # Step 6 - leaf_prediction (not yet solved)
 # TODO: implement
