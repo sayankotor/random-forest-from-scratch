@@ -1,0 +1,64 @@
+"""
+Random Forest from Scratch
+
+Assembled from your step-by-step solutions.
+"""
+
+import numpy as np
+
+# Step 1 - impurity
+from collections import Counter
+
+def impurity(labels):
+    """Return a non-negative impurity score for a 1D array of integer class labels."""
+    # TODO: score how mixed the labels are; 0 for a pure set, larger for more mixed sets.
+    unique_labels_dict = Counter(labels)
+    sum_pk = 0.0
+    for label in unique_labels_dict:
+        number = unique_labels_dict[label]
+        sum_pk += (number/len(labels))**2
+
+    return 1 - sum_pk
+
+# Step 2 - split_dataset (not yet solved)
+# TODO: implement
+
+# Step 3 - split_score (not yet solved)
+# TODO: implement
+
+# Step 4 - best_split (not yet solved)
+# TODO: implement
+
+# Step 5 - should_stop (not yet solved)
+# TODO: implement
+
+# Step 6 - leaf_prediction (not yet solved)
+# TODO: implement
+
+# Step 7 - build_tree (not yet solved)
+# TODO: implement
+
+# Step 8 - predict_example_tree (not yet solved)
+# TODO: implement
+
+# Step 9 - predict_tree (not yet solved)
+# TODO: implement
+
+# Step 10 - bootstrap_sample (not yet solved)
+# TODO: implement
+
+# Step 11 - feature_subset (not yet solved)
+# TODO: implement
+
+# Step 12 - train_forest (not yet solved)
+# TODO: implement
+
+# Step 13 - combine_predictions (not yet solved)
+# TODO: implement
+
+# Step 14 - predict_forest (not yet solved)
+# TODO: implement
+
+# Step 15 - accuracy (not yet solved)
+# TODO: implement
+
