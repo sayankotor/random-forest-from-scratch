@@ -81,7 +81,7 @@ def build_tree(features, labels, max_depth=10, min_samples_split=2, feature_subs
         prediction = leaf_prediction(labels)
         return {'leaf': True, 'prediction': prediction}
     else:
-        if feature_subset:
+        if feature_subset is not None:
             feature_indices = feature_subset
         else:
             feature_indices = np.arange(features.shape[1])
@@ -128,8 +128,23 @@ def feature_subset(num_features, num_to_pick, rng):
     indices = rng.choice(num_features, size =num_to_pick, replace=False)
     return indices
 
-# Step 12 - train_forest (not yet solved)
-# TODO: implement
+# Step 12 - train_forest
+import numpy as np
+from numpy.random import RandomState
+
+def train_forest(features, labels, num_trees=10, max_depth=10, min_samples_split=2, num_features_per_split=None, random_state=0):
+    # TODO: grow num_trees decision trees on bootstrap samples with random feature subsets.
+    trees = []
+    if num_features_per_split is None:
+        num_features_per_split = int(np.round(np.sqrt(features.shape[1])))
+    rng = np.random.RandomState(random_state)
+    for i in range(num_trees):
+        
+        sampled_features, sampled_labels = bootstrap_sample(features, labels, rng)
+        selected_indices = feature_subset(features.shape[1], num_features_per_split, rng)
+        tree = build_tree(sampled_features, sampled_labels, max_depth, min_samples_split, selected_indices, 0)
+        trees.append({'tree':tree, 'feature_indices':selected_indices})
+    return trees
 
 # Step 13 - combine_predictions (not yet solved)
 # TODO: implement
